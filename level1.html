@@ -8,13 +8,8 @@
     <style>
         body { font-family: "Microsoft JhengHei", "Heiti TC", sans-serif; background-color: #eef2f5; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
         
-        .canvas-16-9 { 
-            width: 100%; max-width: 1400px; 
-            min-height: 85vh; 
-            background-color: #fdf5e6; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
-            display: flex; flex-direction: column; align-items: center; 
-            padding: 3% 3% 4% 3%; box-sizing: border-box; position: relative; 
-        }
+        /* 📱 平板自適應高度 */
+        .canvas-16-9 { width: 100%; max-width: 1400px; min-height: 85vh; background-color: #fdf5e6; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center; padding: 3% 3% 4% 3%; box-sizing: border-box; position: relative; }
         
         .header-area { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2%; }
         h1 { color: #e74c3c; font-size: 28px; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
@@ -32,30 +27,19 @@
         .pool-title { background: #f4e8d8; color: #7b6855; } .zone-title { background: #ff9999; color: #fff; }
         
         #pool { display: flex; flex-wrap: wrap; align-content: flex-start; justify-content: center; padding-top: 60px; height: 100%; box-sizing: border-box; }
-        .part-img { width: 130px; height: 130px; object-fit: contain; cursor: grab; transition: transform 0.1s ease; z-index: 10; }
+        
+        /* 🌟 核心：touch-action: none 防止拖曳時畫面捲動 */
+        .part-img { width: 130px; height: 130px; object-fit: contain; cursor: grab; transition: transform 0.1s ease; z-index: 10; touch-action: none; }
         #pool .part-img { position: relative !important; left: auto !important; top: auto !important; margin: 8px; background-color: #fdfdfd; border: 2px solid #eaeaea; border-radius: 12px; }
-        .part-img:active { cursor: grabbing; transform: scale(1.05); }
-        #zone .part-img { position: absolute !important; background-color: transparent; border: 3px solid transparent; padding: 0; margin: 0; }
+        .part-img:active { cursor: grabbing; transform: scale(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        
+        #zone-guide { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: #ecd5d5; font-weight: bold; pointer-events: none; width: 80%; text-align: center; }
         
         .status-area { min-height: 80px; display: flex; justify-content: center; align-items: center; gap: 2vw; margin-top: 20px; width: 100%; }
         #message { font-size: 24px; color: #ff6347; font-weight: bold; margin: 0; }
         
         #next-btn { font-size: 24px; padding: 15px 40px; background-color: #4CAF50; color: white; border: none; border-radius: 50px; cursor: pointer; display: none; box-shadow: 0 6px 0 #388e3c; font-weight: bold; }
         #next-btn:active { transform: translateY(6px); box-shadow: none; }
-        
-        #zone-guide { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: #ecd5d5; font-weight: bold; pointer-events: none; width: 80%; text-align: center; }
-        
-        /* 🎮 鍵盤風格的十字方向鍵 */
-        #d-pad { position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); display: none; grid-template-columns: 48px 48px 48px; grid-template-rows: 48px 48px; gap: 8px; z-index: 20; background: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        
-        .dir-btn { background-color: #2c3e50; color: white; border: none; border-radius: 8px; font-size: 24px; display: flex; justify-content: center; align-items: center; cursor: pointer; user-select: none; box-shadow: 0 5px 0 #1a252f; transition: 0.1s; }
-        .dir-btn:active { transform: translateY(5px); box-shadow: none; }
-        
-        /* 🌟 把按鈕精準放回倒 T 字型的位置 */
-        #btn-up    { grid-column: 2; grid-row: 1; }
-        #btn-left  { grid-column: 1; grid-row: 2; }
-        #btn-down  { grid-column: 2; grid-row: 2; }
-        #btn-right { grid-column: 3; grid-row: 2; }
     </style>
 </head>
 <body>
@@ -66,15 +50,8 @@
         </div>
         <div class="target-hint">目標：<span id="target-word" style="color: #e74c3c;">字</span></div>
         <div class="game-wrapper">
-            <div class="box parts-pool" id="pool" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="box-title pool-title">1️⃣ 點住並拖曳</div></div>
-            <div class="box drop-zone" id="zone" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="box-title zone-title">2️⃣ 放到這裡組裝</div><p id="zone-guide">把部件丟進來</p>
-                <div id="d-pad">
-                    <div class="dir-btn" id="btn-up" onclick="movePart(0, -5)">⬆</div>
-                    <div class="dir-btn" id="btn-left" onclick="movePart(-5, 0)">⬅</div>
-                    <div class="dir-btn" id="btn-down" onclick="movePart(0, 5)">⬇</div>
-                    <div class="dir-btn" id="btn-right" onclick="movePart(5, 0)">➡</div>
-                </div>
-            </div>
+            <div class="box parts-pool" id="pool"><div class="box-title pool-title">1️⃣ 點住並拖曳</div></div>
+            <div class="box drop-zone" id="zone"><div class="box-title zone-title">2️⃣ 放到這裡組裝</div><p id="zone-guide">把部件丟進來</p></div>
         </div>
         <div class="status-area"><div id="message"></div><button id="next-btn" onclick="nextWord()">我拼好了 ➡️</button></div>
     </div>
@@ -85,7 +62,8 @@
         document.getElementById('back-btn').href = `lesson.html?id=${lessonId}`;
         const wordData = allLessonsData[lessonId] ? allLessonsData[lessonId].level1 : [];
 
-        let gameWords = [], currentIdx = 0, placedCount = 0, activePart = null; 
+        let gameWords = [], currentIdx = 0, placedCount = 0;
+        let activePart = null, offsetX = 0, offsetY = 0;
 
         function shuffle(array) {
             let currentIndex = array.length, randomIndex;
@@ -101,49 +79,111 @@
         }
 
         function initGame() {
-            const pool = document.getElementById('pool'), targetWord = document.getElementById('target-word'), msg = document.getElementById('message'), guide = document.getElementById('zone-guide'), dpad = document.getElementById('d-pad'), nextBtn = document.getElementById('next-btn');
+            const pool = document.getElementById('pool'), targetWord = document.getElementById('target-word'), msg = document.getElementById('message'), guide = document.getElementById('zone-guide'), nextBtn = document.getElementById('next-btn');
             document.querySelectorAll('.part-img').forEach(img => img.remove());
             msg.innerText = ''; nextBtn.style.display = 'none'; nextBtn.innerText = '我拼好了 ➡️'; nextBtn.onclick = nextWord;
-            placedCount = 0; activePart = null; dpad.style.display = 'none'; guide.style.display = 'block';
+            placedCount = 0; guide.style.display = 'block';
             let data = gameWords[currentIdx]; targetWord.innerText = data.word;
             let shuffledParts = [...data.parts].sort(() => Math.random() - 0.5);
+            
             shuffledParts.forEach((src) => {
-                let img = document.createElement('img'); img.src = src; img.className = 'part-img'; img.id = 'img-' + Math.random().toString(36).substr(2, 9); img.draggable = true;
-                let partIdx = data.parts.indexOf(src); img.dataset.targetX = data.pos[partIdx].x; img.dataset.targetY = data.pos[partIdx].y;
-                img.addEventListener('dragstart', drag); img.addEventListener('touchstart', handleTouchStart, {passive: false}); img.addEventListener('touchmove', handleTouchMove, {passive: false}); img.addEventListener('touchend', handleTouchEnd);
-                img.onerror = function() { console.error("圖片遺失: " + src); }; pool.appendChild(img);
+                let img = document.createElement('img'); img.src = src; img.className = 'part-img'; 
+                img.draggable = false; // 停用原生的拖曳，改用全觸控設計
+                
+                // 🌟 綁定觸控與滑鼠的通用事件
+                img.addEventListener('pointerdown', handlePointerDown);
+                img.onerror = function() { console.error("圖片遺失: " + src); }; 
+                pool.appendChild(img);
             });
         }
 
-        function allowDrop(ev) { ev.preventDefault(); }
-        function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
-        function drop(ev) { ev.preventDefault(); handlePartPlacement(document.getElementById(ev.dataTransfer.getData("text")), ev.target.closest('.box')); }
+        // 🌟 全自由拖曳核心邏輯
+        function handlePointerDown(e) {
+            e.preventDefault();
+            activePart = this;
+            activePart.style.zIndex = 1000;
+            activePart.setPointerCapture(e.pointerId);
 
-        let touchImg = null;
-        function handleTouchStart(e) { if(this.parentElement.id === 'pool') { touchImg = this; this.style.opacity = '0.5'; } }
-        function handleTouchMove(e) { if (!touchImg) return; e.preventDefault(); let touchLoc = e.targetTouches[0]; touchImg.style.position = 'fixed'; touchImg.style.left = (touchLoc.clientX - 65) + 'px'; touchImg.style.top = (touchLoc.clientY - 65) + 'px'; touchImg.style.zIndex = 1000; }
-        function handleTouchEnd(e) { if (!touchImg) return; touchImg.style.opacity = '1'; touchImg.style.position = 'relative'; touchImg.style.left = 'auto'; touchImg.style.top = 'auto'; touchImg.style.zIndex = 10; let dropTarget = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY); handlePartPlacement(touchImg, dropTarget ? dropTarget.closest('.box') : null); touchImg = null; }
+            let rect = activePart.getBoundingClientRect();
+            
+            if (activePart.parentElement.id === 'pool') {
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
+                activePart.style.position = 'fixed';
+                activePart.style.left = rect.left + 'px';
+                activePart.style.top = rect.top + 'px';
+                document.body.appendChild(activePart);
+            } else if (activePart.parentElement.id === 'zone') {
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
+            }
 
-        function handlePartPlacement(draggedImg, targetBox) {
-            if (!draggedImg || !targetBox) return;
-            let targetArea = targetBox.id, isCurrentlyInZone = draggedImg.parentElement.id === 'zone';
-            if (targetArea === 'zone' && !isCurrentlyInZone) {
-                document.getElementById('zone').appendChild(draggedImg); document.getElementById('zone-guide').style.display = 'none';
-                draggedImg.style.left = draggedImg.dataset.targetX + 'px'; draggedImg.style.top = draggedImg.dataset.targetY + 'px';
-                draggedImg.onclick = function(e) { e.stopPropagation(); if(activePart) { activePart.style.borderColor = "transparent"; activePart.style.borderStyle = "solid"; } activePart = this; this.style.borderColor = "#00bcd4"; this.style.borderStyle = "dashed"; document.getElementById('d-pad').style.display = "grid"; };
-                placedCount++; checkWin();
-            } else if (targetArea === 'pool' && isCurrentlyInZone) {
-                document.getElementById('pool').appendChild(draggedImg); draggedImg.style.left = 'auto'; draggedImg.style.top = 'auto'; draggedImg.onclick = null; draggedImg.style.borderColor = "transparent"; draggedImg.style.borderStyle = "solid";
-                if(activePart === draggedImg) { activePart = null; document.getElementById('d-pad').style.display = 'none'; }
-                placedCount--; if (placedCount < gameWords[currentIdx].parts.length) { document.getElementById('message').innerText = ''; document.getElementById('next-btn').style.display = 'none'; }
-                if (document.querySelectorAll('#zone .part-img').length === 0) document.getElementById('zone-guide').style.display = 'block';
+            activePart.addEventListener('pointermove', handlePointerMove);
+            activePart.addEventListener('pointerup', handlePointerUp);
+        }
+
+        function handlePointerMove(e) {
+            if (!activePart) return;
+            e.preventDefault();
+            
+            if (activePart.parentElement === document.body) {
+                activePart.style.left = (e.clientX - offsetX) + 'px';
+                activePart.style.top = (e.clientY - offsetY) + 'px';
+            } else if (activePart.parentElement.id === 'zone') {
+                let zoneRect = document.getElementById('zone').getBoundingClientRect();
+                let newLeft = e.clientX - zoneRect.left - offsetX;
+                let newTop = e.clientY - zoneRect.top - offsetY;
+                activePart.style.left = newLeft + 'px';
+                activePart.style.top = newTop + 'px';
             }
         }
 
-        function movePart(dx, dy) { if(!activePart) return; activePart.style.left = (parseInt(activePart.style.left || 0) + dx) + 'px'; activePart.style.top = (parseInt(activePart.style.top || 0) + dy) + 'px'; }
-        document.getElementById('zone').addEventListener('click', function(e) { if (e.target.id === 'zone') { if(activePart) { activePart.style.borderColor = "transparent"; activePart.style.borderStyle = "solid"; } activePart = null; document.getElementById('d-pad').style.display = 'none'; } });
+        function handlePointerUp(e) {
+            if (!activePart) return;
+            activePart.releasePointerCapture(e.pointerId);
+            activePart.removeEventListener('pointermove', handlePointerMove);
+            activePart.removeEventListener('pointerup', handlePointerUp);
+            activePart.style.zIndex = 10;
+
+            let zone = document.getElementById('zone');
+            let zoneRect = zone.getBoundingClientRect();
+            let pool = document.getElementById('pool');
+
+            // 判斷是否丟進粉紅色組裝區
+            let droppedInZone = ( e.clientX >= zoneRect.left && e.clientX <= zoneRect.right && e.clientY >= zoneRect.top && e.clientY <= zoneRect.bottom );
+
+            if (droppedInZone) {
+                if (activePart.parentElement === document.body) {
+                    zone.appendChild(activePart);
+                    document.getElementById('zone-guide').style.display = 'none';
+                    placedCount++;
+                }
+                activePart.style.position = 'absolute';
+                let newLeft = e.clientX - zoneRect.left - offsetX;
+                let newTop = e.clientY - zoneRect.top - offsetY;
+                activePart.style.left = newLeft + 'px';
+                activePart.style.top = newTop + 'px';
+                
+                checkWin();
+            } else {
+                if (activePart.parentElement === zone) placedCount--;
+                pool.appendChild(activePart);
+                activePart.style.position = 'relative';
+                activePart.style.left = 'auto';
+                activePart.style.top = 'auto';
+                
+                if (placedCount < gameWords[currentIdx].parts.length) { 
+                    document.getElementById('message').innerText = ''; 
+                    document.getElementById('next-btn').style.display = 'none'; 
+                }
+                if (document.querySelectorAll('#zone .part-img').length === 0) {
+                    document.getElementById('zone-guide').style.display = 'block';
+                }
+            }
+            activePart = null;
+        }
         
-        function checkWin() { if (placedCount === gameWords[currentIdx].parts.length) { document.getElementById('message').innerText = "🌟 組合完成！ 🌟"; document.getElementById('next-btn').style.display = 'inline-block'; } }
+        function checkWin() { if (placedCount === gameWords[currentIdx].parts.length) { document.getElementById('message').innerText = "🌟 請檢查拼得對不對喔！ 🌟"; document.getElementById('next-btn').style.display = 'inline-block'; } }
         
         function nextWord() { 
             currentIdx++; 
@@ -152,7 +192,6 @@
             } else { 
                 document.getElementById('message').style.color = "#2ecc71";
                 document.getElementById('message').innerText = "🎉 恭喜！本關卡挑戰成功！"; 
-                document.getElementById('d-pad').style.display = 'none'; 
                 let btn = document.getElementById('next-btn');
                 btn.innerText = '🏠 回課程大廳';
                 btn.onclick = () => { window.location.href = `lesson.html?id=${lessonId}`; };
