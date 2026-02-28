@@ -176,11 +176,11 @@ const allLessonsData = {
         title: "第五課：蒂列娜", 
         level1: [
             // 🌟 畔：1 小，2 正常 (完全修復安全座標)
-            { word: "畔", parts: ["images/L5/筆順-畔-部件-1.png", "images/L5/筆順-畔-部件-2.png"], pos: [{x: 90, y: 180, scale: 0.6}, {x: 160, y: 180}] },
+            { word: "畔", parts: ["images/L5/筆順-畔-部件-1.png", "images/L5/筆順-畔-部件-2.png"], pos: [{x: 90, y: 180, scale: 0.3}, {x: 160, y: 180}] },
             // 🌟 巒：上下結構 (完全修復安全座標)
             { word: "巒", parts: ["images/L5/筆順-巒-部件-1.png", "images/L5/筆順-巒-部件-2.png"], pos: [{x: 120, y: 130, scale: 0.7}, {x: 120, y: 200, scale: 0.9}] },
             // 🌟 鰭：1 大，2 極小，3 極小 (完全修復安全座標，完美左大右小)
-            { word: "鰭", parts: ["images/L5/筆順-鰭-部件-1.png", "images/L5/筆順-鰭-部件-2.png", "images/L5/筆順-鰭-部件-3.png"], pos: [{x: 70, y: 180, scale: 0.9}, {x: 160, y: 130, scale: 0.6}, {x: 160, y: 210, scale: 0.6}] }, 
+            { word: "鰭", parts: ["images/L5/筆順-鰭-部件-1.png", "images/L5/筆順-鰭-部件-2.png", "images/L5/筆順-鰭-部件-3.png"], pos: [{x: 70, y: 180, scale: 0.9}, {x: 160, y: 130, scale: 0.2}, {x: 160, y: 210, scale: 0.2}] }, 
             // 以下皆為清洗過後的標準安全坐標
             { word: "韌", parts: ["images/L5/筆順-韌-部件-1.png", "images/L5/筆順-韌-部件-2.png"], pos: [{x: 90, y: 180}, {x: 160, y: 180}] },
             { word: "鞭", parts: ["images/L5/筆順-鞭-部件-1.png", "images/L5/筆順-鞭-部件-2.png"], pos: [{x: 90, y: 180}, {x: 160, y: 180}] },
