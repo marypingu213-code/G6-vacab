@@ -169,5 +169,32 @@ const allLessonsData = {
             "夢想不一定 會偉大，但它會在遠方 激勵我們。",
             "找到適合的 學習楷模，也能幫助我們 掌握要領。"
         ]
+    },
+
+    // ================= 第五課 =================
+    "5": { 
+        title: "第五課：蒂列娜", 
+        level1: [
+            { word: "畔", parts: ["images/L5/筆順-畔-部件-1.png", "images/L5/筆順-畔-部件-2.png"], pos: [{x: -25, y: 39, scale: 0.45}, {x: 39, y: -89, scale: 0.4}] },
+            { word: "巒", parts: ["images/L5/筆順-巒-部件-1.png", "images/L5/筆順-巒-部件-2.png"], pos: [{x: -95, y: -32, scale: 0.35}, {x: -21, y: 128, scale: 0.4}] },
+            { word: "鰭", parts: ["images/L5/筆順-鰭-部件-1.png", "images/L5/筆順-鰭-部件-2.png", "images/L5/筆順-鰭-部件-3.png"], pos: [{x: -42, y: -75, scale: 0.45}, {x: 52, y: -56, scale: 0.4}, {x: 103, y: 110, scale: 0.55}] },
+            { word: "韌", parts: ["images/L5/筆順-韌-部件-1.png", "images/L5/筆順-韌-部件-2.png"], pos: [{x: -41, y: -112, scale: 0.35}, {x: 44, y: -18, scale: 0.4}] },
+            { word: "鞭", parts: ["images/L5/筆順-鞭-部件-1.png", "images/L5/筆順-鞭-部件-2.png"], pos: [{x: -65, y: -81, scale: 0.4}, {x: 4, y: -45, scale: 0.4}] },
+            { word: "蒼", parts: ["images/L5/筆順-蒼-部件-1.png", "images/L5/筆順-蒼-部件-2.png"], pos: [{x: -49, y: 10, scale: 0.55}, {x: -110, y: -11, scale: 0.4}] },
+            { word: "恰", parts: ["images/L5/筆順-恰-部件-1.png", "images/L5/筆順-恰-部件-2.png"], pos: [{x: -30, y: -89, scale: 0.45}, {x: -8, y: -87, scale: 0.45}] },
+            { word: "倚", parts: ["images/L5/筆順-倚-部件-1.png", "images/L5/筆順-倚-部件-2.png"], pos: [{x: -15, y: -87, scale: 0.4}, {x: 5, y: -108, scale: 0.35}] },
+            { word: "胖", parts: ["images/L5/筆順-胖-部件-1.png", "images/L5/筆順-胖-部件-2.png"], pos: [{x: -42, y: -55, scale: 0.45}, {x: 21, y: -101, scale: 0.4}] },
+            { word: "搶", parts: ["images/L5/筆順-搶-部件-1.png", "images/L5/筆順-搶-部件-2.png"], pos: [{x: -44, y: -76, scale: 0.45}, {x: -11, y: -91, scale: 0.45}] },
+            { word: "頸", parts: ["images/L5/筆順-頸-部件-1.png", "images/L5/筆順-頸-部件-2.png"], pos: [{x: -49, y: -36, scale: 0.4}, {x: 36, y: -79, scale: 0.4}] },
+            { word: "勁", parts: ["images/L5/筆順-勁-部件-1.png", "images/L5/筆順-勁-部件-2.png"], pos: [{x: -28, y: -59, scale: 0.4}, {x: 31, y: -67, scale: 0.4}] },
+            { word: "洶", parts: ["images/L5/筆順-洶-部件-1.png", "images/L5/筆順-洶-部件-2.png"], pos: [{x: 5, y: -34, scale: 0.4}, {x: 9, y: -88, scale: 0.35}] },
+            { word: "湧", parts: ["images/L5/筆順-湧-部件-1.png", "images/L5/筆順-湧-部件-2.png"], pos: [{x: -5, y: -44, scale: 0.4}, {x: -4, y: -88, scale: 0.35}] },
+            { word: "湍", parts: ["images/L5/筆順-湍-部件-1.png", "images/L5/筆順-湍-部件-2.png", "images/L5/筆順-湍-部件-3.png"], pos: [{x: -14, y: -59, scale: 0.5}, {x: 30, y: -29, scale: 0.55}, {x: 3, y: 51, scale: 0.45}] },
+            { word: "猛", parts: ["images/L5/筆順-猛-部件-1.png", "images/L5/筆順-猛-部件-2.png", "images/L5/筆順-猛-部件-3.png"], pos: [{x: -65, y: -101, scale: 0.45}, {x: 40, y: -42, scale: 0.5}, {x: -9, y: 106, scale: 0.5}] },
+            { word: "濺", parts: ["images/L5/筆順-濺-部件-1.png", "images/L5/筆順-濺-部件-2.png", "images/L5/筆順-濺-部件-3.png"], pos: [{x: -9, y: -49, scale: 0.4}, {x: 14, y: -27, scale: 0.45}, {x: 72, y: -84, scale: 0.35}] }
+        ], 
+        level2: [], 
+        level3: [], 
+        level4: [] 
     }
 };
