@@ -175,13 +175,9 @@ const allLessonsData = {
     "5": { 
         title: "第五課：蒂列娜", 
         level1: [
-            // 🌟 畔：1 小，2 正常 (完全修復安全座標)
-            { word: "畔", parts: ["images/L5/筆順-畔-部件-1.png", "images/L5/筆順-畔-部件-2.png"], pos: [{x: 90, y: 180, scale: 0.3}, {x: 160, y: 180}] },
-            // 🌟 巒：上下結構 (完全修復安全座標)
+            { word: "畔", parts: ["images/L5/筆順-畔-部件-1.png", "images/L5/筆順-畔-部件-2.png"], pos: [{x: 90, y: 180, scale: 0.6}, {x: 160, y: 180}] },
             { word: "巒", parts: ["images/L5/筆順-巒-部件-1.png", "images/L5/筆順-巒-部件-2.png"], pos: [{x: 120, y: 130, scale: 0.7}, {x: 120, y: 200, scale: 0.9}] },
-            // 🌟 鰭：1 大，2 極小，3 極小 (完全修復安全座標，完美左大右小)
-            { word: "鰭", parts: ["images/L5/筆順-鰭-部件-1.png", "images/L5/筆順-鰭-部件-2.png", "images/L5/筆順-鰭-部件-3.png"], pos: [{x: 70, y: 180, scale: 0.9}, {x: 160, y: 130, scale: 0.2}, {x: 160, y: 210, scale: 0.2}] }, 
-            // 以下皆為清洗過後的標準安全坐標
+            { word: "鰭", parts: ["images/L5/筆順-鰭-部件-1.png", "images/L5/筆順-鰭-部件-2.png", "images/L5/筆順-鰭-部件-3.png"], pos: [{x: 70, y: 180, scale: 0.9}, {x: 160, y: 130, scale: 0.6}, {x: 160, y: 210, scale: 0.6}] }, 
             { word: "韌", parts: ["images/L5/筆順-韌-部件-1.png", "images/L5/筆順-韌-部件-2.png"], pos: [{x: 90, y: 180}, {x: 160, y: 180}] },
             { word: "鞭", parts: ["images/L5/筆順-鞭-部件-1.png", "images/L5/筆順-鞭-部件-2.png"], pos: [{x: 90, y: 180}, {x: 160, y: 180}] },
             { word: "蒼", parts: ["images/L5/筆順-蒼-部件-1.png", "images/L5/筆順-蒼-部件-2.png"], pos: [{x: 120, y: 130, scale: 0.8}, {x: 120, y: 200, scale: 0.9}] },
@@ -194,12 +190,58 @@ const allLessonsData = {
             { word: "洶", parts: ["images/L5/筆順-洶-部件-1.png", "images/L5/筆順-洶-部件-2.png"], pos: [{x: 90, y: 180}, {x: 160, y: 180}] },
             { word: "湧", parts: ["images/L5/筆順-湧-部件-1.png", "images/L5/筆順-湧-部件-2.png"], pos: [{x: 90, y: 180}, {x: 160, y: 180}] },
             { word: "湍", parts: ["images/L5/筆順-湍-部件-1.png", "images/L5/筆順-湍-部件-2.png", "images/L5/筆順-湍-部件-3.png"], pos: [{x: 70, y: 180, scale: 0.8}, {x: 120, y: 180, scale: 0.8}, {x: 170, y: 180, scale: 0.8}] },
-            // 🌟 猛：左、右上、右下
             { word: "猛", parts: ["images/L5/筆順-猛-部件-1.png", "images/L5/筆順-猛-部件-2.png", "images/L5/筆順-猛-部件-3.png"], pos: [{x: 80, y: 180, scale: 0.9}, {x: 150, y: 130, scale: 0.6}, {x: 150, y: 210, scale: 0.6}] },
             { word: "濺", parts: ["images/L5/筆順-濺-部件-1.png", "images/L5/筆順-濺-部件-2.png", "images/L5/筆順-濺-部件-3.png"], pos: [{x: 70, y: 180, scale: 0.8}, {x: 120, y: 180, scale: 0.8}, {x: 170, y: 180, scale: 0.8}] }
         ], 
         level2: [], 
         level3: [], 
         level4: [] 
-    }
+    },
+
+    // ================= 第六課 =================
+    "6": { 
+        title: "第六課：不怕", 
+        level1: [
+            // 🌟 第六課生字全數匯入 (預設標準排列)
+            { word: "居", parts: ["images/L6/筆順-居-部件-1.png", "images/L6/筆順-居-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "孩", parts: ["images/L6/筆順-孩-部件-1.png", "images/L6/筆順-孩-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "常", parts: ["images/L6/筆順-常-部件-1.png", "images/L6/筆順-常-部件-2.png", "images/L6/筆順-常-部件-3.png"], pos: [{x: 70, y: 180}, {x: 120, y: 180}, {x: 170, y: 180}] },
+            { word: "躲", parts: ["images/L6/筆順-躲-部件-1.png", "images/L6/筆順-躲-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "發", parts: ["images/L6/筆順-發-部件-1.png", "images/L6/筆順-發-部件-2.png", "images/L6/筆順-發-部件-3.png"], pos: [{x: 70, y: 180}, {x: 120, y: 180}, {x: 170, y: 180}] },
+            { word: "現", parts: ["images/L6/筆順-現-部件-1.png", "images/L6/筆順-現-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "就", parts: ["images/L6/筆順-就-部件-1.png", "images/L6/筆順-就-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "頭", parts: ["images/L6/筆順-頭-部件-1.png", "images/L6/筆順-頭-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "回", parts: ["images/L6/筆順-回-部件-1.png", "images/L6/筆順-回-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "想", parts: ["images/L6/筆順-想-部件-1.png", "images/L6/筆順-想-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "但", parts: ["images/L6/筆順-但-部件-1.png", "images/L6/筆順-但-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "怎", parts: ["images/L6/筆順-怎-部件-1.png", "images/L6/筆順-怎-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "知", parts: ["images/L6/筆順-知-部件-1.png", "images/L6/筆順-知-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "道", parts: ["images/L6/筆順-道-部件-1.png", "images/L6/筆順-道-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "先", parts: ["images/L6/筆順-先-部件-1.png", "images/L6/筆順-先-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "鄰", parts: ["images/L6/筆順-鄰-部件-1.png", "images/L6/筆順-鄰-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] },
+            { word: "縮", parts: ["images/L6/筆順-縮-部件-1.png", "images/L6/筆順-縮-部件-2.png", "images/L6/筆順-縮-部件-3.png", "images/L6/筆順-縮-部件-4.png"], pos: [{x: 90, y: 130}, {x: 150, y: 130}, {x: 90, y: 180}, {x: 150, y: 180}] },
+            { word: "讓", parts: ["images/L6/筆順-讓-部件-1.png", "images/L6/筆順-讓-部件-2.png"], pos: [{x: 100, y: 180}, {x: 170, y: 180}] }
+        ], 
+        level2: [], 
+        level3: [], 
+        level4: [] 
+    },
+
+    // ================= 第七課 =================
+    "7": { title: "第七課：(請輸入課名)", level1: [], level2: [], level3: [], level4: [] },
+
+    // ================= 第八課 =================
+    "8": { title: "第八課：(請輸入課名)", level1: [], level2: [], level3: [], level4: [] },
+
+    // ================= 第九課 =================
+    "9": { title: "第九課：(請輸入課名)", level1: [], level2: [], level3: [], level4: [] },
+
+    // ================= 第十課 =================
+    "10": { title: "第十課：(請輸入課名)", level1: [], level2: [], level3: [], level4: [] },
+
+    // ================= 第十一課 =================
+    "11": { title: "第十一課：(請輸入課名)", level1: [], level2: [], level3: [], level4: [] },
+
+    // ================= 第十二課 =================
+    "12": { title: "第十二課：(請輸入課名)", level1: [], level2: [], level3: [], level4: [] }
 };
